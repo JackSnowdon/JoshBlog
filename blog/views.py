@@ -52,9 +52,30 @@ def edit_post(request, pk):
                 return redirect("blog_home")
         else:
             post_form = PostForm(instance=this_post)
-        return render(request, "edit_post.html", {"post_form": post_form})
+        return render(request, "edit_post.html", {"post_form": post_form, "this_post": this_post })
     else:
         messages.error(
             request, "You Don't Have The Required Permissions", extra_tags="alert"
         )
         return redirect("blog_home")
+
+
+@login_required
+def delete_post(request, pk):
+    if request.user.profile.staff_access:
+        instance = Post.objects.get(pk=pk)
+        messages.error(request, "Deleted {0}".format(instance.title), extra_tags="alert")
+        instance.delete()
+        return redirect(reverse("blog_home"))
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")
+
+
+def view_post(request, pk):
+    this_post = get_object_or_404(Post, pk=pk)
+    return render(request, "view_post.html", {"this_post": this_post})
+
+

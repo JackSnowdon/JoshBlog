@@ -71,4 +71,5 @@ def user_profile(request):
     """ Display user profile """
     user = User.objects.get(email=request.user.email)
     profile = user.profile
-    return render(request, 'profile.html', {"user": user, "profile": profile})
+    posts = profile.posts.all()
+    return render(request, 'profile.html', {"user": user, "profile": profile, "posts": posts})
