@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Zilla+Slab:400,600&display=swap');
+
+/* Background */
+
+.bg {
+    background-color: #e0e0e0;
+    font-family: 'Zilla Slab', serif;
+}
+
+.nav-bg {
+    background-color: #2d2b0e;
+}
+
+.nav-bg a {
+    color: #f4f4f4;
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+.nav-bg a:hover {
+    color: #74a812
+}
+
+.nav-button {
+    color: #f4f4f4;
+}
+
+.navbar-toggler {
+    outline: none;
+}
+
+.logged-in {
+    color: #f4f4f4;
+    margin: 8px 2px;
+}
