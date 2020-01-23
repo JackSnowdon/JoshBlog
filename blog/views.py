@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from .models import Post
@@ -21,11 +22,17 @@ def add_post(request):
                 user = request.user
                 post.done_by = user.profile
                 post.save()
+                messages.error(
+                    request, "Added {0}".format(post.title), extra_tags="alert"
+                )
                 return redirect("blog_home")
         else:
             post_form = PostForm()
         return render(request, "add_post.html", {"post_form": post_form})
     else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
         return redirect("blog_home")
 
 
@@ -39,9 +46,15 @@ def edit_post(request, pk):
                 post = post_form.save(commit=False)
                 post.last_modified = datetime.now()
                 post.save()
+                messages.error(
+                    request, "Edited {0} @ {1}".format(post.title, post.last_modified), extra_tags="alert"
+                )
                 return redirect("blog_home")
         else:
             post_form = PostForm(instance=this_post)
         return render(request, "edit_post.html", {"post_form": post_form})
     else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
         return redirect("blog_home")
