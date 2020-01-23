@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block page_title %} Add Post {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block page_title %} View {{ this_post.title|truncatewords:3 }} {% endblock %} {% block content %}
 
 <div class="row">
     <div class="col-12">
