@@ -10,4 +10,6 @@
     </div>
 </div>
 
-{% for p in posts %} {{ p.title }} {% endfor %} {% endblock %}
+{% for p in posts %}
+<p>{{ p.title }} - {{ p.created_on }} - {{ p.last_modified }} </p>
+<a href="{% url 'edit_post' p.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Post</a>{% endfor %} {% endblock %}

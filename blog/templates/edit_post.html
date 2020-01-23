@@ -1,9 +1,9 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %} {% load static %} {% block page_title %} Add Post {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load static %} {% block page_title %} Edit Post {% endblock %} {% block content %}
 
 <div class="row">
     <div class="col-12 text-center">
-        <h2>New Post</h2>
-        <form role="form" method="post" id="add-post-form" action="{% url 'add_post' %}">
+        <h2>Edit Post</h2>
+        <form role="form" method="post" id="edit-post">
             {% csrf_token %}
             <div class="form-row">
                 <div class="form-group col-12 mb-0">
@@ -15,7 +15,7 @@
                     {{ post_form.body|as_crispy_field }}
                 </div>
             </div>
-            <input class="btn btn-success" id="submit_post" name="commit" type="submit" value="Add Post">
+            <input class="btn btn-success" id="submit_post" name="commit" type="submit" value="Edit Post">
         </form>
     </div>
 </div>
