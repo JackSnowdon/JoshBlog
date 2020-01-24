@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-if os.getenv("HOSTNAME") == "blog-josh.herokuapp.com/":
+if os.getenv("HOSTNAME") == "blog-josh.herokuapp.com":
     ALLOWED_HOSTS = [os.getenv("HOSTNAME")]
     SECRET_KEY = os.environ.get("SECRET_KEY")
     DEBUG = False
@@ -39,7 +39,6 @@ else:
     }
 
 # DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
-
 
 
 # Application definition
